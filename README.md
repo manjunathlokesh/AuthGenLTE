@@ -9,18 +9,9 @@ For Linux :
 g++ -g -Wall -std=c++14 AUTH.cpp main.cpp -o output
 ```
 ## Running the program:
-**server side:**
 ```sh
-./server
+./output
 ```
-**client side:**
-```sh
-./client
-```
-**packet analysis:**
-```sh
-sudo tcpdump -w text.pcap -i lo
-```
-*Please note:* run server and packet analizer first before running client, and press ctrl-c to exit form server and packet sniffer.
+*Please note:* RAND value is hard coded. you can uncomment the section of code where it choses random value for RAND.
 ## Expected output:
-Please refer to **OutputImages folder** in the repo.
+Please refer to **Output folder** in the repo.
