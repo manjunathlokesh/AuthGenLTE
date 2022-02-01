@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 using namespace std;
 typedef struct UnsignedChar128 
 {
@@ -24,6 +25,7 @@ typedef struct UnsignedChar16
 
 } unsigned16bit;
 
+//Prototypes of all the functions used in the program.
 void f1(const unsigned128bit XDOUT, const unsigned64bit CDOUT, unsigned64bit* MAC);
 void f4(unsigned48bit* AK, const unsigned128bit XDOUT);
 void Authgen(const unsigned48bit SQN, const unsigned48bit AK, const unsigned16bit AMF, const unsigned64bit MAC, unsigned128bit* AUTH);
