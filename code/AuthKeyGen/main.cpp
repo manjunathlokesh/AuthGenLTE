@@ -3,7 +3,7 @@
 
 int main() 
 {
-	int j = 0;
+    int j = 0;
     unsigned128bit K;
     unsigned128bit XDOUT;
     unsigned128bit RAND;
@@ -13,13 +13,13 @@ int main()
     unsigned16bit AMF;
     unsigned64bit MAC;
     unsigned128bit AUTH;
-	unsigned char temp = 0x00;
+    unsigned char temp = 0x00;
     AMF.data[0] = 0x80;
-	//AMF is hard coded for now it will change dynamically according to USIM data
+    //AMF is hard coded for now it will change dynamically according to USIM data
     
     for (int i = 0; i < 8; i++)
     {
-		//CDOUT is the combination of SQN and AMF
+	//CDOUT is the combination of SQN and AMF
         if (i < 6)
             CDOUT.data[i] = SQN.data[i];
         else {
@@ -33,7 +33,7 @@ int main()
         K.data[i] = temp;
         temp = temp + 0x11;
     }
-	//Printing value of K to console
+    //Printing value of K to console
     cout << "k    :";
     for (int i = 0; i < 16; i++) 
     {
@@ -43,7 +43,7 @@ int main()
     cout << "RAND :";
     srand(time(0));
 
-	//RAND value is hardcoded you can comment this part of the code and uncomment the below for loop for random value
+    //RAND value is hardcoded you can comment this part of the code and uncomment the below for loop for random value
     RAND.data[0] = 0x31;
     RAND.data[1] = 0x32;
     RAND.data[2] = 0x31;
@@ -78,7 +78,7 @@ int main()
         printf("%02X", XDOUT.data[i]);
     }
     cout << endl;
-	//take out 48 bits from(24 to 71) XDOUT and assign it to AK.
+    //take out 48 bits from(24 to 71) XDOUT and assign it to AK.
     f4( & AK, XDOUT);
     cout << "AK   :";
 	//printing AK value.
@@ -88,25 +88,25 @@ int main()
     }
     cout << endl;
     cout << "CDOUT:";
-	//printing CDOUT value.
+    //printing CDOUT value.
     for (int i = 0; i < 8; i++) 
     {
         printf("%02X", CDOUT.data[i]);
     }
     cout << endl;
-	//XOR first half bits with CDOUT and assign it to MAC
+    //XOR first half bits with CDOUT and assign it to MAC
     f1(XDOUT, CDOUT, & MAC);
     cout << "MAC  :";
-	//printing MAC value.
+    //printing MAC value.
     for (int i = 0; i < 8; i++) 
     {
         printf("%02X", MAC.data[i]);
     }
     cout << endl;
-	//Authgen function will XOR SQN and AK. It will concatenate AMF and MAC to AUTH value.
+    //Authgen function will XOR SQN and AK. It will concatenate AMF and MAC to AUTH value.
     Authgen(SQN, AK, AMF, MAC, & AUTH);
     cout << "AUTH :";
-	//printing AUTH value.
+    //printing AUTH value.
     for (int i = 0; i < 16; i++) 
     {
         printf("%02X", AUTH.data[i]);
