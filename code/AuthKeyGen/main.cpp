@@ -78,20 +78,22 @@ int main()
         printf("%02X", XDOUT.data[i]);
     }
     cout << endl;
-	//left shift XDOUT 8 bits and assign it to CK
-	f3(&  CK,XDOUT);
-	cout << "CK   :";
-	for (int i = 0; i < 16; i++) {
-		printf("%02X", CK.data[i]);
-	}
-	cout << endl; 
-	//left shift XDOUT 16 bits and assign it to IK
-	f4K(& IK,XDOUT);
-	cout << "IK   :";
-	for (int i = 0; i < 16; i++) {
-		printf("%02X", IK.data[i]);
-	}
-	cout << endl; 
+    //left shift XDOUT 8 bits and assign it to CK
+    f3(&  CK,XDOUT);
+    cout << "CK   :";
+    for (int i = 0; i < 16; i++) 
+    {
+	 printf("%02X", CK.data[i]);
+    }
+    cout << endl; 
+    //left shift XDOUT 16 bits and assign it to IK
+    f4K(& IK,XDOUT);
+    cout << "IK   :";
+    for (int i = 0; i < 16; i++) 
+    {
+	  printf("%02X", IK.data[i]);
+    }
+    cout << endl; 
   
     //take out 48 bits from(24 to 71) XDOUT and assign it to AK.
     f4( & AK, XDOUT);
