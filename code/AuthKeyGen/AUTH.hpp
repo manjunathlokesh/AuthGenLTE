@@ -27,5 +27,7 @@ typedef struct UnsignedChar16
 
 //Prototypes of all the functions used in the program.
 void f1(const unsigned128bit XDOUT, const unsigned64bit CDOUT, unsigned64bit* MAC);
+void f3(unsigned128bit* CK,const unsigned128bit XDOUT);
+void f4K(unsigned128bit* IK,const unsigned128bit XDOUT);
 void f4(unsigned48bit* AK, const unsigned128bit XDOUT);
 void Authgen(const unsigned48bit SQN, const unsigned48bit AK, const unsigned16bit AMF, const unsigned64bit MAC, unsigned128bit* AUTH);

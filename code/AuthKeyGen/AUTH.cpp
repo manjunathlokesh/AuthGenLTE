@@ -8,7 +8,25 @@ void f1(const unsigned128bit XDOUT,const unsigned64bit CDOUT, unsigned64bit * MA
         MAC -> data[i] = XDOUT.data[i] ^ CDOUT.data[i];
     }
 }
-
+void f3(unsigned128bit* CK,const unsigned128bit XDOUT)
+{
+	
+	for(int i=0;i<15;i++)
+	{
+		CK->data[i]=XDOUT.data[i+1];
+	}
+	CK->data[15]=XDOUT.data[0];
+}
+void f4K(unsigned128bit* CK,const unsigned128bit XDOUT)
+{
+	int j=2;
+	for(int i=0;i<13;i++)
+	{
+		CK->data[i]=XDOUT.data[j++];
+	}
+	CK->data[14]=XDOUT.data[0];
+	CK->data[15]=XDOUT.data[1];
+}
 void f4(unsigned48bit * AK,const unsigned128bit XDOUT) 
 {
     int j = 0;
